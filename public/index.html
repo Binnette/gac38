@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html data-theme="light" lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Grenoble Adventure Club</title>
+  <meta name="description"
+    content="Hiking, via ferrata, canoe, geocaching, canyoning, ski, snowshoeing, climbing, cinema, parties and much more!" />
+  <meta name="robots" content="index,follow" />
+  <link rel="stylesheet" href="css/default.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <meta name="msapplication-TileColor" content="#da532c" />
+  <meta name="theme-color" content="#fafafa" />
+</head>
+
+<body>
+  <main>
+    <h2>Post an event on GAC channel 📩</h2>
+
+    <form id="form-post-event" action="javascript:;" onsubmit="postEvent(this)">
+      <div class="rendered-form">
+
+        <div class="radio-group form-group field-radio-icon">
+          <label for="radio-icon" class="radio-group-label">
+            Icon <span class="required">*</span>
+          </label>
+          <div class="radio-group">
+            <div class="radio">
+              <input name="radio-icon" access="false" id="radio-icon-0" required="required" aria-required="true"
+                value="⭐" type="radio" checked="checked" onclick="changeIcon();">
+              <label for="radio-icon-0">⭐</label>
+            </div>
+            <div class="radio">
+              <input name="radio-icon" access="false" id="radio-icon-1" required="required" aria-required="true"
+                value="🍺" type="radio" onclick="changeIcon();">
+              <label for="radio-icon-1">🍺</label>
+            </div>
+            <div class="radio">
+              <input name="radio-icon" access="false" id="radio-icon-2" required="required" aria-required="true"
+                value="🎶" type="radio" onclick="changeIcon();">
+              <label for="radio-icon-2">🎶</label>
+            </div>
+            <div class="radio">
+              <input name="radio-icon" access="false" id="radio-icon-other" required="required" aria-required="true"
+                class="undefined other-option" value="option-other" type="radio" onclick="changeIcon();">
+              <label for="radio-icon-other">Other
+                <input type="text" size="5" minlength="1" maxlength="2" disabled="disabled" id="radio-icon-other-value"
+                  class="other-val">
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group field-title">
+          <label for="title" class="text-label">
+            Title <span class="required">*</span>
+          </label>
+          <input type="text" id="title" name="title" placeholder="My awesome event" class="form-control" access="false">
+        </div>
+
+        <div class="form-group field-date">
+          <label for="date" class="date-label">
+            Date <span class="required">*</span></label>
+          <input type="date" id="date" name="date" class="form-control" access="false">
+        </div>
+
+        <div class="form-group field-time">
+          <label for="time" class="text-label">
+            Time <span class="required">*</span></label>
+          <input type="text" id="time" name="time" placeholder="8pm" class="form-control" access="false">
+        </div>
+
+        <div class="form-group field-location">
+          <label for="location" class="text-label">
+            Location <span class="required">*</span>
+          </label>
+          <input type="text" id="location" name="location" access="false" class="form-control"
+            placeholder="Parc Paul Mistral https://goo.gl/maps/CuFum6hrF4H4Jzku6">
+        </div>
+
+        <div class="form-group field-username">
+          <label for="username" class="text-label">
+            Your name <span class="required">*</span>
+          </label>
+          <input type="text" id="username" name="username" access="false" class="form-control"
+            placeholder="Bob, Alice, ...">
+        </div>
+
+        <div class="form-group field-description">
+          <label for="description" class="textarea-label">
+            Description
+          </label>
+          <textarea type="textarea" id="description" name="description" class="form-control" access="false"
+            placeholder="🎉 Let's party tonight..."></textarea>
+        </div>
+
+        <div class="button form-group field-button-post-event">
+          <button type="submit" id="btn-post-event" class="btn-default btn" name="btn-post-event" access="false">
+            📲 Post Event
+          </button>
+          <span id="result"></span>
+        </div>
+
+      </div>
+    </form>
+
+    <br>
+
+    <a href="https://binnette.github.io/GAC/" title="Grenoble Adventure Club">🔙 Go back to GAC website</a>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer__credit">
+      <div>
+        <p>
+          <small>
+            Made with ❤ by
+            <a href="https://github.com/Binnette" target="_blank" rel="noopener">Binnette</a>.
+          </small>
+        </p>
+      </div>
+
+      <div class="theme-switch-wrapper">
+        <label class="theme-switch" for="checkbox">
+          <input type="checkbox" id="checkbox" />
+          <div class="slider">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="feather feather-sun">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="feather feather-moon">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </div>
+        </label>
+      </div>
+    </div>
+  </footer>
+
+  <script type="text/javascript" src="js/default.js"></script>
+</body>
+
+</html>
