@@ -1,0 +1,9 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}",
+        "README.md",
+        "LICENSE"
+    ],
+    "appService.deploySubpath": "."
+}

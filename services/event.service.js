@@ -21,6 +21,7 @@ module.exports = {
         var date = req.body.date
         var time = req.body.time
         var location = req.body.location
+        var username = req.body.username
         var description = req.body.description
 
         if (!icon || icon.length < 1) {
@@ -51,9 +52,14 @@ module.exports = {
             return res.status(400).json({ error: '❌ Location is mandatory' })
         }
 
+        if (!username || location.username < 3) {
+            return res.status(400).json({ error: '❌ Your name is mandatory' })
+        }
+
         var mess = icon + " " + title + " " + icon
         mess += "\n📅 " + date + " " + time
         mess += "\n📍 " + location
+        mess += "\n😁 Proposed by: " + username
 
         if (description && description.length > 4) {
             mess += "\n\n" + description
