@@ -5,8 +5,33 @@ const channel = process.env.TELEGRAM_CHANNEL_ID
 //DEBUG ONLY
 //process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0
 
-module.exports = {
-    postEvent: (req, res) => {
+var self = {
+
+    postMessageOnTelegram: (mess, res) => {
+        var encodedMess = encodeURIComponent(mess)
+        console.log("Encoded message: " + encodedMess)
+        var url = apiTelegram + 'bot' + bot + '/sendMessage?chat_id=' + channel + '&text=' + encodedMess
+
+        axios
+            .get(url)
+            .then(response => {
+                console.log('✔ Telegram succes: ' + response.status)
+                return res.status(200).json({ status: '✔ Event posted!' })
+            })
+            .catch(error => {
+                console.log('❌ Telegram error:')
+                console.error(error)
+                if (error) {
+                    if (error.code === 'ETIMEDOUT') {
+                        return res.status(500).json({ error: '❌ Telegram error: timeout' })
+                    }
+                    return res.status(500).json({ error: '❌ Telegram error: ' + error.code })
+                }
+                return res.status(500).json({ error: '❌ Unknow error' })
+            })
+    },
+
+    postCustomEvent: (req, res) => {
 
         if (!bot) {
             return res.status(400).json({ error: '❌ Server error', reason: 'TELEGRAM_BOT_ID is not configured' })
@@ -65,27 +90,13 @@ module.exports = {
             mess += "\n\n" + description
         }
 
-        var encodedMess = encodeURIComponent(mess)
-        console.log("Encoded message: " + encodedMess)
+        self.postMessageOnTelegram(mess, res)
 
-        var url = apiTelegram + 'bot' + bot + '/sendMessage?chat_id=' + channel + '&text=' + encodedMess
+    },
 
-        axios
-            .get(url)
-            .then(response => {
-                console.log('✔ Telegram succes: ' + response.status)
-                return res.status(200).json({ status: '✔ Event posted!' })
-            })
-            .catch(error => {
-                console.log('❌ Telegram error:')
-                console.error(error)
-                if (error) {
-                    if (error.code === 'ETIMEDOUT') {
-                        return res.status(500).json({ error: '❌ Telegram error: timeout' })
-                    }
-                    return res.status(500).json({ error: '❌ Telegram error: ' + error.code })
-                }
-                return res.status(500).json({ error: '❌ Unknow error' })
-            })
+    postMeetupEvent: (req, res) => {
+
     }
 }
+
+module.exports = self

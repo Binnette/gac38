@@ -127,7 +127,7 @@ function postEvent() {
         'description': description,
     };
 
-    var url = '/event';
+    var url = '/event/custom';
 
     $.post(url, toPost)
         .done(function (data) {
