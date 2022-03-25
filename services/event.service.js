@@ -86,7 +86,7 @@ var self = {
         mess += "\n📍 " + location
         mess += "\n😁 Proposed by: " + username
 
-        if (description && description.length > 4) {
+        if (description && description.length > 3) {
             mess += "\n\n" + description
         }
 

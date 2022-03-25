@@ -10,7 +10,6 @@
     content="Hiking, via ferrata, canoe, geocaching, canyoning, ski, snowshoeing, climbing, cinema, parties and much more!" />
   <meta name="robots" content="index,follow" />
   <link rel="stylesheet" href="css/default.css" />
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <meta name="msapplication-TileColor" content="#da532c" />
   <meta name="theme-color" content="#fafafa" />
 </head>
@@ -20,31 +19,31 @@
     <h2>Post an event on GAC channel 📩</h2>
 
     <form id="form-post-event" action="javascript:;" onsubmit="postEvent(this)">
-      <div class="rendered-form">
+      <div>
 
-        <div class="radio-group form-group field-radio-icon">
-          <label for="radio-icon" class="radio-group-label">
+        <div>
+          <label for="radio-icon">
             Icon <span class="required">*</span>
           </label>
-          <div class="radio-group">
-            <div class="radio">
-              <input name="radio-icon" access="false" id="radio-icon-0" required="required" aria-required="true"
+          <div>
+            <div>
+              <input name="radio-icon" id="radio-icon-0" required="required" aria-required="true"
                 value="⭐" type="radio" checked="checked" onclick="changeIcon();">
               <label for="radio-icon-0">⭐</label>
             </div>
-            <div class="radio">
-              <input name="radio-icon" access="false" id="radio-icon-1" required="required" aria-required="true"
+            <div>
+              <input name="radio-icon" id="radio-icon-1" required="required" aria-required="true"
                 value="🍺" type="radio" onclick="changeIcon();">
               <label for="radio-icon-1">🍺</label>
             </div>
-            <div class="radio">
-              <input name="radio-icon" access="false" id="radio-icon-2" required="required" aria-required="true"
+            <div>
+              <input name="radio-icon" id="radio-icon-2" required="required" aria-required="true"
                 value="🎶" type="radio" onclick="changeIcon();">
               <label for="radio-icon-2">🎶</label>
             </div>
-            <div class="radio">
-              <input name="radio-icon" access="false" id="radio-icon-other" required="required" aria-required="true"
-                class="undefined other-option" value="option-other" type="radio" onclick="changeIcon();">
+            <div>
+              <input name="radio-icon" id="radio-icon-other" required="required" aria-required="true"
+                value="option-other" type="radio" onclick="changeIcon();">
               <label for="radio-icon-other">Other
                 <input type="text" size="5" minlength="1" maxlength="2" disabled="disabled" id="radio-icon-other-value"
                   class="other-val">
@@ -53,51 +52,79 @@
           </div>
         </div>
 
-        <div class="form-group field-title">
-          <label for="title" class="text-label">
+        <div>
+          <label for="title">
             Title <span class="required">*</span>
           </label>
-          <input type="text" id="title" name="title" placeholder="My awesome event" class="form-control" access="false">
+          <input type="text" id="title" name="title" placeholder="My awesome event">
         </div>
 
-        <div class="form-group field-date">
-          <label for="date" class="date-label">
+        <div>
+          <label for="date">
             Date <span class="required">*</span></label>
-          <input type="date" id="date" name="date" class="form-control" access="false">
+          <input type="date" id="date" name="date">
         </div>
 
-        <div class="form-group field-time">
-          <label for="time" class="text-label">
+        <div>
+          <label for="time">
             Time <span class="required">*</span></label>
-          <input type="text" id="time" name="time" placeholder="8pm" class="form-control" access="false">
+          <input type="text" id="time" name="time" placeholder="8pm">
         </div>
 
-        <div class="form-group field-location">
-          <label for="location" class="text-label">
+        <div>
+          <label for="location">
             Location <span class="required">*</span>
           </label>
-          <input type="text" id="location" name="location" access="false" class="form-control"
+          <input type="text" id="location" name="location"
             placeholder="Parc Paul Mistral https://goo.gl/maps/CuFum6hrF4H4Jzku6">
         </div>
 
-        <div class="form-group field-username">
-          <label for="username" class="text-label">
+        <div>
+          <label for="username">
             Your name <span class="required">*</span>
           </label>
-          <input type="text" id="username" name="username" access="false" class="form-control"
+          <input type="text" id="username" name="username"
             placeholder="Bob, Alice, ...">
         </div>
 
-        <div class="form-group field-description">
-          <label for="description" class="textarea-label">
+        <div>
+          <label for="description">
             Description
           </label>
-          <textarea type="textarea" id="description" name="description" class="form-control" access="false"
+          <textarea type="textarea" id="description" name="description"
             placeholder="🎉 Let's party tonight..."></textarea>
         </div>
 
-        <div class="button form-group field-button-post-event">
-          <button type="submit" id="btn-post-event" class="btn-default btn" name="btn-post-event" access="false">
+        <div style="display: none;">
+          <label for="radio-alsoin">
+            Also post in
+          </label>
+          <div>
+            <div>
+              <input name="radio-alsoin" id="radio-alsoin-0" required="required" aria-required="true"
+                value="climbing" type="radio" checked="checked">
+              <label for="radio-alsoin-0">🧗‍♂️ Climbing</label>
+            </div>
+            <div>
+              <input name="radio-alsoin" id="radio-alsoin-1" required="required" aria-required="true"
+                value="food" type="radio">
+              <label for="radio-alsoin-1">🍽 Foodies</label>
+            </div>
+            <div>
+              <input name="radio-alsoin" id="radio-alsoin-2" required="required" aria-required="true"
+                value="photo" type="radio">
+              <label for="radio-alsoin-2">📸 Photography</label>
+            </div>
+            <div>
+              <input name="radio-alsoin" id="radio-alsoin-3" required="required" aria-required="true"
+                value="snow" type="radio">
+              <label for="radio-alsoin-3">⛄ Snow activities</label>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <button type="submit" id="btn-post-event" name="btn-post-event">
             📲 Post Event
           </button>
           <span id="result"></span>
@@ -151,6 +178,7 @@
     </div>
   </footer>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script type="text/javascript" src="js/default.js"></script>
 </body>
 
